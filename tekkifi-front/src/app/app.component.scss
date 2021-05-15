@@ -1,0 +1,27 @@
+.banner-text2 {
+    position: relative;
+    text-align: center;
+    margin-top: 75px;
+
+    h1 {
+        font-weight: 700;
+        font-size: 48px;
+        color: white;
+        margin-bottom: 10px;
+        font-family: Nunito-ExtraLight;
+        line-height: 60px;
+
+        span {
+            display: inline-block;
+            color: blue;
+            font-family: Nunito-SemiBold;
+            size: 51px;
+
+        }
+    }
+    p {
+        margin-bottom: 60px;
+        color: white;
+        font-size: 18px;
+    }
+}

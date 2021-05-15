@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeOneComponent implements OnInit {
 
+  isAutheticated = false;
   constructor() { }
 
   ngOnInit(): void {
