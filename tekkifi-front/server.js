@@ -10,7 +10,7 @@ const app = express();
 app.use(requireHTTPS);
 app.use(express.static('./dist/tekki-v1'));
 app.get('/*', function(req, res) {
-  res.sendFile('index.html', {root: 'dist/tekki-v1/'}
+  res.sendFile('src/index.html', {root: 'dist/tekki-v1/'}
 );
 });
 app.listen(process.env.PORT || 8080);
