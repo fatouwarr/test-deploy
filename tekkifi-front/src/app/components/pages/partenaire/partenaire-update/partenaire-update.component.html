@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-partenaire-2-heading" >Create or edit a Partenaire </h2>
+            <div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           formControlName="nom"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"  for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telephone">Telephone</label>
+                    <input type="text" class="form-control" name="telephone" id="field_telephone"
+                           formControlName="telephone"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"  for="field_typePartenaire">Type Partenaire</label>
+                    <input type="text" class="form-control" name="typePartenaire" id="field_typePartenaire"
+                           formControlName="typePartenaire"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_presentation">Presentation</label>
+                    <input type="text" class="form-control" name="presentation" id="field_presentation"
+                           formControlName="presentation"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_adresse">Adresse</label>
+                    <input type="text" class="form-control" name="adresse" id="field_adresse"
+                           formControlName="adresse"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_conditionAccompagnement">Condition Accompagnement</label>
+                    <input type="text" class="form-control" name="conditionAccompagnement" id="field_conditionAccompagnement"
+                           formControlName="conditionAccompagnement"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_presentationAccompagnement">Presentation Accompagnement</label>
+                    <input type="text" class="form-control" name="presentationAccompagnement" id="field_presentationAccompagnement"
+                           formControlName="presentationAccompagnement"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeAccompagnement">Type Accompagnement</label>
+                    <input type="text" class="form-control" name="typeAccompagnement" id="field_typeAccompagnement"
+                           formControlName="typeAccompagnement"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <span >Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    &nbsp;<span >Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

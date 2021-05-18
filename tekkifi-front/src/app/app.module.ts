@@ -35,8 +35,20 @@ import { BlogDetailsComponent } from './components/pages/blog-details/blog-detai
 import { BlogComponent } from './components/pages/blog/blog.component';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import { PartenaireComponent } from './components/pages/partenaire/partenaire.component';
+import { PartenaireUpdateComponent } from './components/pages/partenaire/partenaire-update/partenaire-update.component';
+import { PartenaireDeleteComponent } from './components/pages/partenaire/partenaire-delete/partenaire-delete.component';
+import { DiplomeComponent } from './components/pages/diplome/diplome.component';
+import { MetierComponent } from './components/pages/metier/metier.component';
+import { SituationSocioEconomiqueComponent } from './components/pages/situation-socio-economique/situation-socio-economique.component';
+import { TypeAccompagnementComponent } from './components/pages/type-accompagnement/type-accompagnement.component';
+import { TypePieceComponent } from './components/pages/type-piece/type-piece.component';
+import { DiplomeUpdateComponent } from './components/pages/diplome/diplome-update.component';
+import { DiplomeDeleteComponent } from './components/pages/diplome/diplome-delete.component';
+import {ModalModule} from "ngb-modal";
+import {TokenInterceptor} from "./services/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -70,7 +82,17 @@ import {Ng2PageScrollModule} from 'ng2-page-scroll';
     PrivacyPolicyComponent,
     ContactComponent,
     BlogDetailsComponent,
-    BlogComponent
+    BlogComponent,
+    PartenaireComponent,
+    PartenaireUpdateComponent,
+    PartenaireDeleteComponent,
+    DiplomeComponent,
+    MetierComponent,
+    SituationSocioEconomiqueComponent,
+    TypeAccompagnementComponent,
+    TypePieceComponent,
+    DiplomeUpdateComponent,
+    DiplomeDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,9 +101,17 @@ import {Ng2PageScrollModule} from 'ng2-page-scroll';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    ModalModule
   ],
-  providers: [],
+  providers: [
+      {
+          provide: HTTP_INTERCEPTORS,
+          useClass: TokenInterceptor,
+          multi: true,
+
+      },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

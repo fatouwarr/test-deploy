@@ -18,7 +18,7 @@
 <div class="login-area pt-100">
     <div class="container">
         <h2>Veuillez vous authentifier!</h2>
-
+        <span class="alert-dismissible validation-danger alertConnexion" *ngIf="authenticationError">Vérifiez vos paramétres de connexion SVP.</span>
         <form>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username, Phone Number or Email" [(ngModel)]="username" name="username">
@@ -30,7 +30,7 @@
         </form>
 
         <div class="login-sign-in">
-            <a routerLink="/">Mot de passe oublié?</a>
+<!--            <a routerLink="/">Mot de passe oublié?</a>-->
 
             <ul>
                 <li>Vous n'avez pas de compte ?</li>

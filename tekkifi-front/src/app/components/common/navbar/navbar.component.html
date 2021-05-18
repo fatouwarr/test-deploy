@@ -14,13 +14,13 @@
 
                     <div class="collapse navbar-collapse mean-menu navlinks" id="navbarSupportedContent">
                     <ul class="navbar-nav pr-10">
-                        <li class="nav-item">
+                        <li *ngIf="!status" class="nav-item">
                             <a routerLink="/" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Accueil</a>
                         </li>
                     </ul>
                     <div class="common-btn">
-                        <a *ngIf="!isAuthenticated" class="login-btn" routerLink="/login"><i></i> CONNEXION</a>
-                        <a *ngIf="isAuthenticated" class="login-btn" routerLink="/create-account"><i></i> DECONNEXION</a>
+                        <a *ngIf="!status" class="login-btn" (click)="connexion()"><i></i> CONNEXION</a>
+                        <a *ngIf="status" class="login-btn" (click)="deconnexion()"><i></i> DECONNEXION</a>
                     </div>
                 </div>
                 </div>

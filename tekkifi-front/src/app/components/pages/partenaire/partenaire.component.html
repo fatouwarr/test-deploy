@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span >Partenaire</span>
+        <button class="btn create-ac-btn float-right create-partenaire-2" (click)="ajouter()">
+            <span>
+            Create a new Partenaire
+            </span>
+        </button>
+    </h2>
+    <br/>
+    <div class="alert alert-warning" *ngIf="partenaire?.length === 0">
+        <span >No partenaire found</span>
+    </div>
+    <div class="table-responsive" *ngIf="partenaire?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr >
+                <th scope="col"  ><span >ID</span>  </th>
+                <th scope="col"  ><span >Nom</span>  </th>
+                <th scope="col"  ><span >Email</span>  </th>
+                <th scope="col"  ><span>Telephone</span>  </th>
+                <th scope="col"  ><span >Type Partenaire</span>  </th>
+                <th scope="col"  ><span >Presentation</span>  </th>
+                <th scope="col"  ><span >Adresse</span>  </th>
+                <th scope="col"  ><span >Condition Accompagnement</span>  </th>
+                <th scope="col"  ><span >Presentation Accompagnement</span>  </th>
+                <th scope="col"  ><span >Type Accompagnement</span>  </th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let partenaire2 of partenaire ;trackBy: trackId">
+                <td><a [routerLink]="['/partenaire-2', partenaire2.id, 'view' ]">{{partenaire2.id}}</a></td>
+                <td>{{partenaire2.nom}}</td>
+                <td>{{partenaire2.email}}</td>
+                <td>{{partenaire2.telephone}}</td>
+                <td>{{partenaire2.typePartenaire}}</td>
+                <td>{{partenaire2.presentation}}</td>
+                <td>{{partenaire2.adresse}}</td>
+                <td>{{partenaire2.conditionAccompagnement}}</td>
+                <td>{{partenaire2.presentationAccompagnement}}</td>
+                <td>{{partenaire2.typeAccompagnement}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/partenaire-2', partenaire2.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <span class="d-none d-md-inline" >View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/partenaire-2', partenaire2.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <span class="d-none d-md-inline" >Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/partenaire-2', { outlets: { popup: partenaire2.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="d-none d-md-inline" >Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

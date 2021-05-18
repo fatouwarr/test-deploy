@@ -27,12 +27,17 @@ import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privac
 import { BlogComponent } from './components/pages/blog/blog.component';
 import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
+import {PartenaireComponent} from './components/pages/partenaire/partenaire.component';
+import {PartenaireUpdateComponent} from "./components/pages/partenaire/partenaire-update/partenaire-update.component";
+import {DiplomeComponent} from "./components/pages/diplome/diplome.component";
+import {DiplomeUpdateComponent} from "./components/pages/diplome/diplome-update.component";
 
 const routes: Routes = [
     {path: '', component: HomeOneComponent},
     {path: 'home-two', component: HomeTwoComponent},
     {path: 'home-three', component: HomeThreeComponent},
     {path: 'about', component: AboutComponent},
+    {path: 'partenaire', component: PartenaireComponent},
     {path: 'job-list', component: JobListComponent},
     {path: 'favourite-job', component: FavouriteJobComponent},
     {path: 'job-details', component: JobDetailsComponent},
@@ -57,6 +62,9 @@ const routes: Routes = [
     {path: 'blog-details', component: BlogDetailsComponent},
     {path: 'contact', component: ContactComponent},
     // Here add new pages component
+    {path: 'partenaire/new', component: PartenaireUpdateComponent},
+    {path: 'diplome', component: DiplomeComponent},
+    {path: 'diplome/new', component: DiplomeUpdateComponent},
 
     {path: '**', component: ErrorComponent} // This line will remain down from the whole pages component list
 ];

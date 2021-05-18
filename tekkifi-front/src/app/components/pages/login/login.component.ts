@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {LocalStorageService} from 'ngx-webstorage';
 import {first} from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     authenticationError: boolean;
     loginForm: FormGroup;
     loading = false;
@@ -19,6 +20,9 @@ export class LoginComponent implements OnInit {
     error = '';
     username = '';
     password = '';
+    @Output() messageEvent = new EventEmitter<string>();
+    subscription: Subscription;
+    status: boolean;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -36,56 +40,26 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         console.log('init login--------------------------');
-        // this.loginForm = new FormGroup({
-        //     this.username= new FormControl(''),
-        //     this.password= new FormControl(''),
-        // });
-
+        this.subscription = this.authenticationService.currentStatus.subscribe(message => this.status = message);
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    }
-
-    onSubmit() {
-        console.log('on submit************************');
-        console.log(this.username);
-        console.log(this.password);
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.authenticationService.login(this.username, this.password)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                });
+        // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     login() {
-        console.log('login ts*****************************'+this.username+'ettttttttttttttt'+this.password);
         this.authenticationService.login(this.username, this.password).subscribe(response => {
-                console.log(this.username);
-                console.log(this.password);
                 this.authenticationError = false;
-                console.log('success authent');
-                console.log(response);
-                this.router.navigate(['']);
+                this.authenticationService.changeStatus(true);
+                // this.authenticationService.setAuthenticated(true);
+                this.router.navigate(['/dashboard']);
+                // this.subscription = this.authenticationService.currentMessage.subscribe(message => this.isAuthenticated = message);
             },
             error => {
-                console.log(this.username);
-                console.log(this.password);
-                console.log(error);
                 this.authenticationError = true;
-                console.log('éerorrr conexion');
+                this.loading = false;
             }
         );
+    }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

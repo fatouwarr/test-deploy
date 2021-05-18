@@ -18,7 +18,6 @@ declare let $: any;
 export class AppComponent implements OnInit {
     location: any;
     routerSubscription: any;
-    message = 'message';
 
     constructor(private router: Router) {
     }
