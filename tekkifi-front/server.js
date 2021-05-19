@@ -8,9 +8,9 @@ function requireHTTPS(req, res, next) {
 const express = require('express');
 const app = express();
 app.use(requireHTTPS);
-app.use(express.static('./dist/tekki-v1'));
+app.use(express.static('./dist/tekkifi-front'));
 app.get('/*', function(req, res) {
-  res.sendFile('./index.html', {root: 'dist/tekki-v1/'}
+  res.sendFile('./index.html', {root: 'dist/tekkifi-front/'}
 );
 });
 app.listen(process.env.PORT || 8080);
